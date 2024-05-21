@@ -18,7 +18,7 @@ class Version:
     version = graphwiselearn.__version__
     date = "2024-05-21"
     updated = "2024-05-21"
-    description = "python based visualization of dynamic competence maps"
+    description = ""
 
     authors = "Wolfgang Fahl"
 
