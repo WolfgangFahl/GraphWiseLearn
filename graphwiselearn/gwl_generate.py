@@ -99,8 +99,8 @@ class LearningView:
             with self.solution.content_div:
                 with ui.splitter() as splitter:
                     with splitter.before:
-                        with ui.card().classes('w-full'):
-                            ui.label('Input').classes('text-xl font-bold')
+                        with ui.row().classes('w-full') as self.input_row:
+                            ui.label('What would you like to learn?').classes('text-xl font-bold')
                             with ui.grid(columns=1).classes('gap-4'):
                                 self.element_input = self.create_textarea(
                                     label='Learning Element',
@@ -112,7 +112,7 @@ class LearningView:
                                     placeholder='Enter your background...'
                                 ).classes('w-full')
 
-                                ui.button('Generate Content', on_click=self.generate).classes('w-full')
+                                ui.button('Generate Learning Content', on_click=self.generate).classes('w-full')
 
                     with splitter.after:
                         self.result_display = ui.markdown().classes('w-full')

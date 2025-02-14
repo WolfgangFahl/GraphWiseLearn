@@ -6,6 +6,7 @@ Created on 2024-05-21
 from nicegui import ui, Client
 from ngwidgets.input_webserver import InputWebserver, InputWebSolution, WebserverConfig
 from ngwidgets.llm import LLM
+from ngwidgets.login import Login
 from fastapi.responses import RedirectResponse
 from graphwiselearn.version import Version
 from graphwiselearn.gwl_generate import LearningView
@@ -35,6 +36,8 @@ class GwlWebServer(InputWebserver):
     def __init__(self):
         """Constructs all the necessary attributes for the WebServer object."""
         InputWebserver.__init__(self, config=GwlWebServer.get_config())
+        self.users = Sso_Users(self.config.short_name)
+        self.login = Login(self, self.users)
         self.llm=LLM()
 
         @ui.page("/user")
@@ -57,7 +60,16 @@ class GwlSolution(InputWebSolution):
     def __init__(self, webserver: GwlWebServer, client: Client):
         super().__init__(webserver, client)  # Call to the superclass constructor
         self.llm=webserver.llm
-        self.users = Sso_Users(solution_name=self.webserver.config.short_name)
+
+    def configure_menu(self):
+        """
+        configure the menu
+        """
+        username = self.login.get_username()
+        user = self.get_user()
+        admin_flag = "🔑" if user and user.is_admin else ""
+        self.link_button(f"{username}{admin_flag}", f"/user", "person")
+
 
     async def show_login(self):
         """Show login page"""
