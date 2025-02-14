@@ -60,6 +60,7 @@ class GwlSolution(InputWebSolution):
     def __init__(self, webserver: GwlWebServer, client: Client):
         super().__init__(webserver, client)  # Call to the superclass constructor
         self.llm=webserver.llm
+        self.login = webserver.login
 
     def configure_menu(self):
         """
