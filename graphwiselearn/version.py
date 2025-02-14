@@ -18,7 +18,7 @@ class Version:
     version = graphwiselearn.__version__
     date = "2024-05-21"
     updated = "2025-02-14"
-    description = ""
+    description = "semantified learning with LLM support"
 
     authors = "Wolfgang Fahl"
 
@@ -26,7 +26,7 @@ class Version:
     chat_url = "https://github.com/WolfgangFahl/GraphWiseLearn/discussions"
     cm_url = "https://github.com/WolfgangFahl/GraphWiseLearn"
 
-    license = f"""Copyright 2024 contributors. All rights reserved.
+    license = f"""Copyright 2024-2025 contributors. All rights reserved.
 
   Licensed under the Apache License 2.0
   http://www.apache.org/licenses/LICENSE-2.0
