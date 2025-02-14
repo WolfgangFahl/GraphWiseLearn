@@ -74,7 +74,6 @@ class GwlSolution(InputWebSolution):
         admin_flag = "🔑" if user and user.is_admin else ""
         self.link_button(f"{username}{admin_flag}", f"/user", "person")
 
-
     async def show_login(self):
         """Show login page"""
         await self.login.login(self)

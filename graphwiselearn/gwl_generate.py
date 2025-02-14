@@ -115,6 +115,8 @@ class LearningView:
                             if not authenticated:
                                 self.gen_button.disable()
                                 ui.label("You need to login to use this service!")
+                                self.solution.link_button(f"SSO Login", f"/user", "person")
+
                     with splitter.after:
                         self.result_display = ui.markdown().classes('w-full')
         except Exception as ex:
