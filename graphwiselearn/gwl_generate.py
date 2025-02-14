@@ -114,6 +114,7 @@ class LearningView:
                             self.gen_button=ui.button('Generate Learning Content', on_click=self.generate).classes('w-full')
                             if not authenticated:
                                 self.gen_button.disable()
+                                ui.label("You need to login to use this service!")
                     with splitter.after:
                         self.result_display = ui.markdown().classes('w-full')
         except Exception as ex:
