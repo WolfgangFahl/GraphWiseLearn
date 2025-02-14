@@ -91,7 +91,7 @@ class LearningView:
             .props("clearable outlined")
         )
 
-    def setup(self):
+    def setup(self,authenticated:bool=False):
         """
         Setup the UI components for the learning content view
         """
@@ -101,7 +101,7 @@ class LearningView:
                     with splitter.before:
                         with ui.row().classes('w-full') as self.input_row:
                             ui.label('What would you like to learn?').classes('text-xl font-bold')
-                            with ui.grid(columns=1).classes('gap-4'):
+                            with ui.grid(columns=2).classes('gap-4'):
                                 self.element_input = self.create_textarea(
                                     label='Learning Element',
                                     placeholder='Enter Slide/Quiz/Goal/Chapter...'
@@ -112,8 +112,9 @@ class LearningView:
                                     placeholder='Enter your background...'
                                 ).classes('w-full')
 
-                                ui.button('Generate Learning Content', on_click=self.generate).classes('w-full')
-
+                            self.gen_button=ui.button('Generate Learning Content', on_click=self.generate).classes('w-full')
+                            if not authenticated:
+                                self.button.disable()
                     with splitter.after:
                         self.result_display = ui.markdown().classes('w-full')
         except Exception as ex:
