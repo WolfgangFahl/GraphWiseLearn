@@ -17,7 +17,7 @@ class Version:
     name = "GraphWiseLearn"
     version = graphwiselearn.__version__
     date = "2024-05-21"
-    updated = "2024-05-21"
+    updated = "2025-02-14"
     description = ""
 
     authors = "Wolfgang Fahl"
