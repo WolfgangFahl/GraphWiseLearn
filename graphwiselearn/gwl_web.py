@@ -10,6 +10,7 @@ from ngwidgets.login import Login
 from fastapi.responses import RedirectResponse
 from graphwiselearn.version import Version
 from graphwiselearn.gwl_generate import LearningView
+from wikibot3rd.sso import User
 from wikibot3rd.sso_users import Sso_Users
 
 class GwlWebServer(InputWebserver):
@@ -75,6 +76,16 @@ class GwlSolution(InputWebSolution):
     async def show_login(self):
         """Show login page"""
         await self.login.login(self)
+
+    def get_user(self) -> User:
+        """
+        get the current user
+        """
+        user = None
+        username = self.login.get_username()
+        if username:
+            user = self.webserver.users.sso.get_user(username)
+        return user
 
     async def show_user(self):
         """
