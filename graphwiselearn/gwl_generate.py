@@ -101,16 +101,15 @@ class LearningView:
                     with splitter.before:
                         with ui.row().classes('w-full') as self.input_row:
                             ui.label('What would you like to learn?').classes('text-xl font-bold')
-                            with ui.grid(columns=2).classes('gap-4'):
-                                self.element_input = self.create_textarea(
-                                    label='Learning Element',
-                                    placeholder='Enter Slide/Quiz/Goal/Chapter...'
-                                ).classes('w-full')
+                            self.element_input = self.create_textarea(
+                                label='Learning Element',
+                                placeholder='Enter Slide/Quiz/Goal/Chapter...'
+                            ).classes('w-full')
 
-                                self.profile_input = self.create_textarea(
-                                    label='Learner Profile',
-                                    placeholder='Enter your background...'
-                                ).classes('w-full')
+                            self.profile_input = self.create_textarea(
+                                label='Learner Profile',
+                                placeholder='Enter your background...'
+                            ).classes('w-full')
 
                             self.gen_button=ui.button('Generate Learning Content', on_click=self.generate).classes('w-full')
                             if not authenticated:

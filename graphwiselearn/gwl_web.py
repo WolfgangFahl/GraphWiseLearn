@@ -115,7 +115,8 @@ class GwlSolution(InputWebSolution):
         show the learning content generation interface
         """
         self.learning_view = LearningView(self)
-        self.learning_view.setup(authenticated=self.login.authenticated())
+        user=self.get_user()
+        self.learning_view.setup(authenticated=user is not None)
 
     async def home(self):
         await self.setup_content_div(self.lwl_generate_page)
