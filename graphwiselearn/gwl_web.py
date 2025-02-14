@@ -57,11 +57,7 @@ class GwlSolution(InputWebSolution):
     def __init__(self, webserver: GwlWebServer, client: Client):
         super().__init__(webserver, client)  # Call to the superclass constructor
         self.llm=webserver.llm
-        self.users = Sso_Users(
-            server_url="q.bitplan.com",
-            wiki_id="swawiki",
-            credentials_path="~/.solutions/sela/swa_credentials.yaml"
-        )
+        self.users = Sso_Users(solution_name=self.webserver.config.short_name)
 
     async def show_login(self):
         """Show login page"""

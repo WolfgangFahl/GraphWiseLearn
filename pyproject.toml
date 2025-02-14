@@ -20,7 +20,7 @@ dependencies = [
 	# https://github.com/WolfgangFahl/nicegui_widgets
 	"ngwidgets>=0.21.2",
 	# https://pypi.org/project/py-3rdparty-mediawiki/
-    'py-3rdparty-mediawiki>=0.14.2',
+    'py-3rdparty-mediawiki>=0.14.3',
 ]
 
 requires-python = ">=3.10"
