@@ -68,6 +68,8 @@ class GwlSolution(InputWebSolution):
         configure the menu
         """
         username = self.login.get_username()
+        if username is None:
+            username="?"
         user = self.get_user()
         admin_flag = "🔑" if user and user.is_admin else ""
         self.link_button(f"{username}{admin_flag}", f"/user", "person")
