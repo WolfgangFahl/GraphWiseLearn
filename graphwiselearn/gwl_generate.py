@@ -81,6 +81,16 @@ class LearningView:
         self.solution = solution
         self.content_generator = ContentGenerator(self.solution.llm)
 
+    def create_textarea(
+        self, label: str, placeholder: Optional[str] = None, height: str = "h-32"
+    ) -> ui.textarea:
+        """Create a consistent textarea with error handling"""
+        return (
+            ui.textarea(label=label, placeholder=placeholder)
+            .classes(f"w-full {height}")
+            .props("clearable outlined")
+        )
+
     def setup(self):
         """
         Setup the UI components for the learning content view
@@ -92,12 +102,12 @@ class LearningView:
                         with ui.card().classes('w-full'):
                             ui.label('Input').classes('text-xl font-bold')
                             with ui.grid(columns=1).classes('gap-4'):
-                                self.element_input = ui.textarea(
+                                self.element_input = self.create_textarea(
                                     label='Learning Element',
                                     placeholder='Enter Slide/Quiz/Goal/Chapter...'
                                 ).classes('w-full')
 
-                                self.profile_input = ui.textarea(
+                                self.profile_input = self.create_textarea(
                                     label='Learner Profile',
                                     placeholder='Enter your background...'
                                 ).classes('w-full')
